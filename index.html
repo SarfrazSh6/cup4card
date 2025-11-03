@@ -178,7 +178,7 @@
     function addStamp() {
       const code = document.getElementById('codeInput').value.trim().toUpperCase();
       if (!validCodes.includes(code)) {
-        alert("Invalid code! Use D1CODE, D2CODE, or LIBCODE.");
+        alert("Invalid code!");
         return;
       }
       if (stamps < 10) {
