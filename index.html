@@ -65,6 +65,7 @@
       margin-top: 15px;
       color: green;
       font-weight: bold;
+      text-align: center;
     }
   </style>
 </head>
@@ -95,7 +96,12 @@
         tracker.appendChild(div);
       }
       if (stamps === 10) {
-        message.textContent = "🎉 Congratulations! Your next coffee is free!";
+        message.textContent = "🎉 Congratulations! You’ve earned a free coffee!";
+        setTimeout(() => {
+          if (confirm("Would you like to start a new round?")) {
+            resetStamps();
+          }
+        }, 1500);
       } else {
         message.textContent = "";
       }
@@ -113,8 +119,14 @@
         renderStamps();
         document.getElementById('codeInput').value = '';
       } else {
-        alert("You’ve already filled all 10 stamps! Enjoy your free coffee!");
+        alert("You’ve completed your card! Enjoy your free coffee!");
       }
+    }
+
+    function resetStamps() {
+      stamps = 0;
+      localStorage.setItem('stamps', stamps);
+      renderStamps();
     }
 
     renderStamps();
